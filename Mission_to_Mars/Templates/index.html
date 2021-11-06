@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  />
+</head>
+
+<body>
+    <div class="container">
+
+      <div class="jumbotron text-center">
+          <h1>Mission to Mars</h1>
+          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Mars Data</a></p>
+      </div>
+
+      <div class="row" id="mars-news">
+        <div class="col-xs-12">
+          <div class="media">
+            <div class="media-body">
+              <h2>Latest Mars News</h2>
+              <h4>{{mars.news_title}}</h4>
+              <p>{{mars.news_p}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="mars-featured-image">
+        <div class="col-xs-8">
+          <h2>Featured Mars Image </h2>
+          <img
+            src="{{mars.featured_image_url}}" alt= "Features Mars Image">
+          
+          
+        </div>
+
+        <div class="col-xs-4">
+        <!-- Mars Facts -->
+          <div class="row" id="mars-facts">
+            <h3>Mars Facts</h3>
+            <table class="table table-striped">
+            {{ mars.mars_facts | safe}}
+            </table>
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="row" id="mars-hemispheres">
+        <div class="page-header" style="height: 50px">
+          <h2 class="align-items-center"><u>Mars Hemispheres</u></h2>  
+      </div>
+    </div>
+    </br>
+    <div class="row">       
+            {% for hem in mars.hemisphere_images %} 
+              <div class="col-6 border">
+              </br>
+                    <div>
+                      <img width="512 px" height="512 px" src="{{hem.img_url}}">
+                    </div>
+
+                    <div>
+                      <h4> {{hem.title}} </h4>  
+                    </div>
+            
+              </div>
+            {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
